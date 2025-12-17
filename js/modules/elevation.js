@@ -32,6 +32,7 @@ export class ElevationService {
         }
     }
 
+    // geographische Koordinaten in Pixel-Koordinaten umrechnen und Höhenwert abfragen
     getElevation(lat, lng) {
         if (!this.isLoaded) return 0;
         

@@ -13,9 +13,9 @@ export class MapManager {
     }
 
     _initBaseLayers() {
-        const osm = L.tileLayer(CONFIG.TILE_LAYERS.osm.url, { maxZoom: 19, attribution: CONFIG.TILE_LAYERS.osm.attr }).addTo(this.map);
-        const topo = L.tileLayer(CONFIG.TILE_LAYERS.topo.url, { maxZoom: 17, attribution: CONFIG.TILE_LAYERS.topo.attr });
-        const pistes = L.tileLayer(CONFIG.TILE_LAYERS.pistes.url, { maxZoom: 18, opacity: 0.8, attribution: CONFIG.TILE_LAYERS.pistes.attr });
+        const osm = L.tileLayer(CONFIG.TILE_LAYERS.osm.url, { maxZoom: 20, attribution: CONFIG.TILE_LAYERS.osm.attr }).addTo(this.map);
+        const topo = L.tileLayer(CONFIG.TILE_LAYERS.topo.url, { maxZoom: 20, attribution: CONFIG.TILE_LAYERS.topo.attr });
+        const pistes = L.tileLayer(CONFIG.TILE_LAYERS.pistes.url, { maxZoom: 20, opacity: 0.8, attribution: CONFIG.TILE_LAYERS.pistes.attr });
 
         this.baseMaps = { "Standard Karte": osm, "Topographisch": topo };
         this.overlayMaps = { "Pisten Overlay": pistes };
@@ -25,7 +25,7 @@ export class MapManager {
         this.map.on('contextmenu', (e) => {
             const coordString = `[${e.latlng.lat.toFixed(4)}, ${e.latlng.lng.toFixed(4)}]`;
             console.log("Koordinate kopiert:", coordString);
-            alert("Koordinate: " + coordString); // Optional
+             //alert("Koordinate: " + coordString); // Optional
         });
     }
 
@@ -48,7 +48,6 @@ export class MapManager {
 
             if (videoFile) {
                 marker.on('click', () => {
-                    // WICHTIG: Video nur öffnen, wenn wir NICHT zeichnen
                     if (!this.markingActive) {
                         this.videoPlayer.open(videoFile);
                     }

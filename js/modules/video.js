@@ -18,7 +18,7 @@ export class VideoPlayer {
 
     open(filename) {
         if (!filename) return;
-        this.player.src = `videos/${filename}`; // Pfadannahme: videos/ ordner
+        this.player.src = `videos/${filename}`;
         this.overlay.classList.remove('overlay-hidden');
         this.overlay.style.display = 'flex'; 
         this.player.play();
